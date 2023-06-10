@@ -1,0 +1,249 @@
+:root {
+    --white: #ffffff;
+    --black: #000000;
+    --black-03: rgba(0, 0, 0, 0.3);
+    --grey: #666666;
+    --border: rgba(15, 23, 42, .08);
+    --body-font: 'Roboto', sans-serif;
+    --display-font: 'Recoleta', serif;
+    --transition-03s: 0.3s ease-in-out;
+    --transition-05s: 0.5s ease-in-out;
+    --transition-1s: 1s ease-in-out;
+}
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body, html {
+    scroll-behavior: smooth;
+    font: 400 16px/normal var(--body-font);
+    -webkit-font-smoothing: antialiased;
+    width: 100%;
+    min-height: 100%;
+    overflow-x: hidden;
+    background-color: var(--white);
+}
+button, input {
+    font: 400 16px/normal var(--body-font);
+    outline: none;
+}
+.select-none {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+.transition03s {
+    transition: var(--transition-03s);
+    -webkit-transition: var(--transition-03s);
+    -moz-transition: var(--transition-03s);
+    -o-transition: var(--transition-03s);
+}
+.canvas-container {
+    width: 100%;
+    height: 100%;
+    min-height: 100vh;
+}
+.logo-wrapper {
+    margin: 20px;
+    position: absolute;
+}
+.logo-wrapper,
+.logo-wrapper .logo {
+    display: flex;
+    align-items: center;
+}
+.logo-wrapper .logo {
+    text-decoration: none;
+    color: inherit;
+}
+.logo-wrapper .logo img {
+    width: 45px;
+    height: 45px;
+    aspect-ratio: 1/1;
+}
+.logo-wrapper .logo span:nth-child(2) {
+    font: 500 18px/normal var(--display-font);
+    letter-spacing: 1px;
+    margin: 0 10px;
+}
+.logo-wrapper .logo span:nth-child(3) {
+    display: inline-block;
+    content: '';
+    background-color: var(--black);
+    width: 15px;
+    height: 1px;
+    transform: rotate(-60deg);
+    margin-right: 10px;
+}
+.logo-wrapper #fileName input {
+    border: none;
+    color: var(--grey);
+    border-bottom: 2px dotted var(--black-03);
+    text-align: center;
+}
+.logo-wrapper #fileName input:is(:hover, :focus, :focus-visible),
+.logo-wrapper #fileName input:hover,
+.logo-wrapper #fileName input:focus,
+.logo-wrapper #fileName input:focus-visible {
+    color: var(--black);
+    border-color: var(--black);
+}
+.canvas-settings {
+    position: absolute;
+    right: 20px;
+    margin: 20px 0;
+    display: flex;
+    align-items: center;
+}
+.theme-option,
+.music-option,
+.canvas-button {
+    display: flex;
+    align-items: center;
+    text-transform: capitalize;
+    padding: 10px;
+    cursor: pointer;
+}
+.theme-option svg,
+.music-option svg,
+.canvas-option svg {
+    width: 24px;
+    margin-right: 20px;
+    justify-content: center;
+}
+.theme-switcher,
+.audio-player,
+.canvas-dropdown {
+    position: relative;
+    display: inline-block;
+}
+.theme-list,
+.music-list,
+.canvas-list {
+    position: absolute;
+    min-width: 250px;
+    background-color: var(--white);
+    border: 2px solid var(--border);
+    border-radius: 1em;
+    right: 0;
+    margin-top: 10px;
+    display: none;
+}
+.theme-list.active,
+.music-list.active,
+.canvas-list.active {
+    display: block;
+}
+.canvas-settings button {
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    aspect-ratio: 1/1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--black);
+    background-color: var(--black);
+    color: var(--white);
+    cursor: pointer;
+    margin-left: 10px;
+}
+.canvas-settings button:hover,
+.audio-off {
+    background-color: var(--white)!important;
+    color: var(--black)!important;
+}
+.theme-list:hover,
+.music-list:hover,
+.canvas-list:hover {
+    color: var(--grey);
+}
+.theme-option:hover,
+.music-option:hover,
+.canvas-option:hover {
+    color: var(--black);
+}
+.theme-option:hover svg,
+.music-option:hover svg,
+.canvas-option:hover svg {
+    transform: rotate(-20deg);
+}
+.canvas-list-dropdown {
+    position: absolute;
+    right: 245px;
+    min-width: 250px;
+    background-color: var(--white);
+    border: 2px solid var(--border);
+    border-radius: 1em;
+    top: 0;
+    overflow: hidden;
+    display: none;
+}
+.canvas-option:hover .canvas-list-dropdown {
+    display: block;
+}
+.canvas-list-option {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    cursor: pointer;
+}
+.canvas-item-left svg {
+    margin-right: 10px!important;
+}
+.canvas-item-left span:nth-child(1) {
+    display: inline-block;
+    content: '';
+    width: 10px;
+    height: 10px;
+    background-color: var(--black);
+    border-radius: 50%;
+    -webkit-animation: pulse var(--transition-1s) alternate infinite;
+    -moz-animation: pulse var(--transition-1s) alternate infinite;
+    -o-animation: pulse var(--transition-1s) alternate infinite;
+    animation: pulse var(--transition-1s) alternate infinite;
+    visibility: hidden;
+    position: absolute;
+    margin-left: -20px;
+}
+@keyframes pulse {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+.canvas-list-option:hover .canvas-item-left span:nth-child(1) {
+    visibility: visible!important;
+}
+.canvas-list-option:hover {
+    margin-left: 20px;
+}
+.canvas-item-right {
+    color: var(--black-03);
+}
+.background-preview {
+    height: 30px;
+    margin: 10px;
+    border-radius: .6em;
+    border: 2px solid var(--border);
+}
+.background-preview.transparent {
+    background: transparent url(asset/transparent-background.png) repeat;
+    background-size: 30px;
+}
+.canvas-list-dropdown:hover {
+    color: var(--grey);
+}
+.canvas-list-option:hover {
+    color: var(--black)!important;
+}
+.canvas-container.transparent {
+    background: transparent url(asset/transparent-background.png) repeat;
+    background-size: 40px;
+}

@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta httpEquiv="x-ua-compatible" content="ie=edge">
+        <meta http-equiv="content-security-policy" content="default-src 'self'; style-src 'self' https://fonts.googleapis.com; img-src 'self' data:; font-src 'self' https://fonts.gstatic.com;">
+        <meta http-equiv="content-type" content="text/html">
+        <meta http-equiv="refresh">
+        <meta name="content" content="blog">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="application-name" content="">
+        <meta name="description" content="">
+        <meta name="author" content="Do Hoang Giang Nguyen">
+        <meta name="generator" content="Visual Code Studio">
+        <meta name="keywords" content="">
+        <meta name="robots" content="index, follow">
+        <meta name="twitter:title" content="">
+        <meta name="twitter:description" content="">
+        <meta name="twitter:image" content="">
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+        <meta name="apple-mobile-web-app-title" content="">
+        <meta name="og:description" content="">
+        <meta name="og:image" content="">
+        <meta property="og:url" content="">
+        <meta property="og:type" content="website">
+        <meta property="og:site_name" content="">
+        <meta property="og:title" content="">
+        <meta name="format-detection" content="telephone=no">
+        <title>Sketchie | Unleash Your Creativity with Digital Drawing!</title>
+        <link rel="apple-touch-icon" sizes="180x180" href="">
+        <link rel="apple-touch-icon" sizes="152x152" href="">
+        <link rel="apple-touch-startup-image" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)" href="">
+        <link rel="icon" href="" type="image/x-icon">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="font/stylesheet.css">
+        <link rel="stylesheet" type="text/css" href="theme.css">
+        <link rel="stylesheet" type="text/css" href="style.css">
+    </head>
+    <body>
+        <noscript>You need to enable JavaScript to run Sketchpad.</noscript>
+        <div class="body-wrapper">
+            <div class="canvas-container" id="sketchpadCanvas">
+                <div class="logo-wrapper">
+                    <a href="/" class="logo select-none">
+                        <img src="media/sketchie-logo.svg" alt="Sketchie logo">
+                        <span>Sketchie</span>
+                        <span></span>
+                    </a>
+                    <div id="fileName">
+                        <input type="text" class="transition03s" id="fileInput" value="Untitled">
+                    </div>
+                </div>
+                <div class="canvas-settings">
+                    <div class="theme-switcher">
+                        <button id="themeToggler" aria-label="Theme toggler" title="Theme Toggler">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1" width="24" height="24" stroke="currentColor" class="w-6 h-6">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z"></path>
+                              </svg>                              
+                        </button>
+                        <div class="theme-list">
+                            <div class="theme-option active" data-value="light" aria-label="Light theme">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1" width="24" height="24" stroke="currentColor" class="w-6 h-6 transition03s">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z"></path>
+                                </svg>
+                                <span>Light theme</span>
+                            </div>
+                            <div class="theme-option" data-value="dark" aria-label="Dark theme">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1" width="24" height="24" stroke="currentColor" class="w-6 h-6 transition03s">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z"></path>
+                                </svg>
+                                <span>Dark theme</span>
+                            </div>
+                            <div class="theme-option" data-value="colourblind" aria-label="Colourblind theme">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-circle-half transition03s" viewBox="0 0 16 16">
+                                    <path d="M8 15A7 7 0 1 0 8 1v14zm0 1A8 8 0 1 1 8 0a8 8 0 0 1 0 16z"/>
+                                  </svg>
+                                <span>Colourblind theme</span>
+                            </div>
+                            <div class="theme-option" data-value="high-contrast" aria-label="High Contrast theme">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1" width="24" height="24" stroke="currentColor" class="w-6 h-6 transition03s">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z"></path>
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                  </svg>                                  
+                                <span>High contrast theme</span>
+                            </div>
+                            <div class="theme-option" data-value="dimmed" aria-label="Dimmed theme">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1" width="24" height="24" stroke="currentColor" class="w-6 h-6 transition03s">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 15a4.5 4.5 0 004.5 4.5H18a3.75 3.75 0 001.332-7.257 3 3 0 00-3.758-3.848 5.25 5.25 0 00-10.233 2.33A4.502 4.502 0 002.25 15z"></path>
+                                  </svg>                                  
+                                  <span>Dimmed theme</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="audio-player">
+                        <button id="musicPlayer" class="audio-off">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1" width="24" height="24" stroke="currentColor" class="w-6 h-6">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M9 9l10.5-3m0 6.553v3.75a2.25 2.25 0 01-1.632 2.163l-1.32.377a1.803 1.803 0 11-.99-3.467l2.31-.66a2.25 2.25 0 001.632-2.163zm0 0V2.25L9 5.25v10.303m0 0v3.75a2.25 2.25 0 01-1.632 2.163l-1.32.377a1.803 1.803 0 01-.99-3.467l2.31-.66A2.25 2.25 0 009 15.553z" />
+                            </svg>                                                                                         
+                        </button>
+                        <div class="music-list">
+                            <div class="music-option">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1" width="24" height="24" stroke="currentColor" class="w-6 h-6 transition03s">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 18.75a6 6 0 006-6v-1.5m-6 7.5a6 6 0 01-6-6v-1.5m6 7.5v3.75m-3.75 0h7.5M12 15.75a3 3 0 01-3-3V4.5a3 3 0 116 0v8.25a3 3 0 01-3 3z"></path>
+                                </svg>
+                                <span>Maybe - Mixed Matches, Lukrative</span>
+                                <audio src="asset/mix-matchers-lukrative-maybe.mp3"></audio>
+                            </div>
+                            <div class="music-option">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1" width="24" height="24" stroke="currentColor" class="w-6 h-6 transition03s">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 18.75a6 6 0 006-6v-1.5m-6 7.5a6 6 0 01-6-6v-1.5m6 7.5v3.75m-3.75 0h7.5M12 15.75a3 3 0 01-3-3V4.5a3 3 0 116 0v8.25a3 3 0 01-3 3z"></path>
+                                </svg>
+                                <span>Habits - Mr. Kitty, PASTEL GHOST</span>
+                                <audio src="asset/mr-kitty-pastel-ghost-habits.mp3"></audio>
+                            </div>
+                            <div class="music-option">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1" width="14" height="14" stroke="currentColor" class="w-6 h-6 transition03s">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 9l10.5-3m0 6.553v3.75a2.25 2.25 0 01-1.632 2.163l-1.32.377a1.803 1.803 0 11-.99-3.467l2.31-.66a2.25 2.25 0 001.632-2.163zm0 0V2.25L9 5.25v10.303m0 0v3.75a2.25 2.25 0 01-1.632 2.163l-1.32.377a1.803 1.803 0 01-.99-3.467l2.31-.66A2.25 2.25 0 009 15.553z"></path>
+                                </svg>
+                                <span>River Flows In You - Yiruma</span>
+                                <audio src="asset/yiruma-river-flows-in-you.mp3"></audio>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="canvas-dropdown">
+                        <button id="canvasSettings">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-layers" viewBox="0 0 16 16">
+                                <path d="M8.235 1.559a.5.5 0 0 0-.47 0l-7.5 4a.5.5 0 0 0 0 .882L3.188 8 .264 9.559a.5.5 0 0 0 0 .882l7.5 4a.5.5 0 0 0 .47 0l7.5-4a.5.5 0 0 0 0-.882L12.813 8l2.922-1.559a.5.5 0 0 0 0-.882l-7.5-4zm3.515 7.008L14.438 10 8 13.433 1.562 10 4.25 8.567l3.515 1.874a.5.5 0 0 0 .47 0l3.515-1.874zM8 9.433 1.562 6 8 2.567 14.438 6 8 9.433z"></path>
+                              </svg>
+                        </button>
+                        <div class="canvas-list">
+                            <div class="canvas-option">
+                                <div class="canvas-button">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-bounding-box transition03s" viewBox="0 0 16 16">
+                                        <path d="M5 2V0H0v5h2v6H0v5h5v-2h6v2h5v-5h-2V5h2V0h-5v2H5zm6 1v2h2v6h-2v2H5v-2H3V5h2V3h6zm1-2h3v3h-3V1zm3 11v3h-3v-3h3zM4 15H1v-3h3v3zM1 4V1h3v3H1z"></path>
+                                    </svg>
+                                    <span>Background preferences</span>
+                                </div>
+                                <div class="canvas-list-dropdown">
+                                    <div class="canvas-list-option transition03s" data-value="solid-background">
+                                        <div class="canvas-item-left">
+                                            <span></span>
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-square-fill transition03s" viewBox="0 0 16 16">
+                                                <path d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2z"/>
+                                            </svg>
+                                            <span>Solid</span>
+                                        </div>
+                                        <div class="canvas-item-right">
+                                            <span>Ctrl + S</span>
+                                        </div>
+                                    </div>
+                                    <div class="canvas-list-option transition03s" data-value="transparent-background">
+                                        <div class="canvas-item-left">
+                                            <span></span>
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-border-all transition03s" viewBox="0 0 16 16">
+                                                <path d="M0 0h16v16H0V0zm1 1v6.5h6.5V1H1zm7.5 0v6.5H15V1H8.5zM15 8.5H8.5V15H15V8.5zM7.5 15V8.5H1V15h6.5z"></path>
+                                            </svg>
+                                            <span>Transparent</span>
+                                        </div>
+                                        <div class="canvas-item-right">
+                                            <span>Ctrl + T</span>
+                                        </div>
+                                    </div>
+                                    <div class="background-preview" id="bgPreview"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="script.js"></script>
+    </body>
+</html>
