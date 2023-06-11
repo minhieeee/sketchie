@@ -161,61 +161,76 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 
   const solidBackgroundOption = document.querySelector('[data-value="solid-background"]');
-  const transparentBackgroundOption = document.querySelector('[data-value="transparent-background"]');
-  const backgroundPreview = document.getElementById('bgPreview');
-  const canvasContainer = document.getElementById('sketchpadCanvas');
-  const canvasListOptions = document.querySelectorAll('.canvas-list-option');
-  
-  solidBackgroundOption.addEventListener('mouseover', () => {
-    backgroundPreview.classList.remove('transparent');
+const transparentBackgroundOption = document.querySelector('[data-value="transparent-background"]');
+const backgroundPreview = document.getElementById('bgPreview');
+const canvasContainer = document.getElementById('sketchpadCanvas');
+const canvasListOptions = document.querySelectorAll('.canvas-list-option');
+
+solidBackgroundOption.addEventListener('mouseover', () => {
+  backgroundPreview.classList.remove('transparent');
+});
+
+transparentBackgroundOption.addEventListener('mouseover', () => {
+  backgroundPreview.classList.add('transparent');
+});
+
+solidBackgroundOption.addEventListener('mouseout', () => {
+  backgroundPreview.classList.remove('transparent');
+});
+
+transparentBackgroundOption.addEventListener('mouseout', () => {
+  backgroundPreview.classList.remove('transparent');
+});
+
+let transparentClicked = false;
+
+transparentBackgroundOption.addEventListener('click', () => {
+  transparentClicked = !transparentClicked;
+  if (transparentClicked) {
+    canvasContainer.classList.add('transparent');
+  } else {
+    canvasContainer.classList.remove('transparent');
+  }
+});
+
+solidBackgroundOption.addEventListener('click', () => {
+  transparentClicked = false;
+  canvasContainer.classList.remove('transparent');
+});
+
+canvasListOptions.forEach(option => {
+  option.addEventListener('click', () => {
+    const canvasList = document.querySelector('.canvas-list');
+    canvasList.classList.remove('open');
   });
-  
-  transparentBackgroundOption.addEventListener('mouseover', () => {
-    backgroundPreview.classList.add('transparent');
-  });
-  
-  solidBackgroundOption.addEventListener('mouseout', () => {
-    backgroundPreview.classList.remove('transparent');
-  });
-  
-  transparentBackgroundOption.addEventListener('mouseout', () => {
-    backgroundPreview.classList.remove('transparent');
-  });
-  
-  let transparentClicked = false;
-  
-  transparentBackgroundOption.addEventListener('click', () => {
+});
+
+document.addEventListener('click', (event) => {
+  const canvasList = document.querySelector('.canvas-list');
+  if (!canvasList.contains(event.target)) {
+    canvasList.classList.remove('open');
+  }
+});
+
+const canvasList = document.querySelector('.canvas-list');
+canvasList.addEventListener('click', () => {
+  canvasList.classList.toggle('open');
+});
+
+document.addEventListener('keydown', (event) => {
+  if (event.shiftKey && event.key === 'S') {
+    transparentClicked = false;
+    canvasContainer.classList.remove('transparent');
+  } else if (event.shiftKey && event.key === 'T') {
     transparentClicked = !transparentClicked;
     if (transparentClicked) {
       canvasContainer.classList.add('transparent');
     } else {
       canvasContainer.classList.remove('transparent');
     }
-  });
-  
-  solidBackgroundOption.addEventListener('click', () => {
-    transparentClicked = false;
-    canvasContainer.classList.remove('transparent');
-  });
-  
-  canvasListOptions.forEach(option => {
-    option.addEventListener('click', () => {
-      const canvasList = document.querySelector('.canvas-list');
-      canvasList.classList.remove('open');
-    });
-  });
-  
-  document.addEventListener('click', (event) => {
-    const canvasList = document.querySelector('.canvas-list');
-    if (!canvasList.contains(event.target)) {
-      canvasList.classList.remove('open');
-    }
-  });
-  
-  const canvasList = document.querySelector('.canvas-list');
-  canvasList.addEventListener('click', () => {
-    canvasList.classList.toggle('open');
-  });
+  }
+});
+
 
   const musicPlayerButton = document.getElementById('musicPlayer');
 const musicOptions = document.querySelectorAll('.music-option');
@@ -260,4 +275,70 @@ function pauseSong(song) {
   song.pause();
   song.parentElement.classList.remove('playing');
   isMusicPlaying = false;
+}
+
+const sizeOptions = document.querySelectorAll('.canvas-list-option');
+const bodyWrapper = document.querySelector('.body-wrapper');
+const customWidthInput = document.getElementById('customWidthInput');
+const customHeightInput = document.getElementById('customHeightInput');
+
+sizeOptions.forEach(option => {
+  option.addEventListener('click', () => {
+    const value = option.dataset.value;
+    adjustCanvasSize(value);
+    resetCanvasView();
+  });
+});
+
+function adjustCanvasSize(value) {
+  canvasContainer.style.minHeight = '1px'; // Change min-height to 1px
+  canvasContainer.style.width = '';
+  canvasContainer.style.height = '';
+  customWidthInput.style.minHeight = '';
+  customHeightInput.style.minHeight = '';
+
+  switch (value) {
+    case 'sd-size':
+      canvasContainer.style.width = '750px';
+      canvasContainer.style.height = '1334px';
+      break;
+    case 'hd-size':
+      canvasContainer.style.width = '1500px';
+      canvasContainer.style.height = '2668px';
+      break;
+    case 'square-size':
+      canvasContainer.style.width = '1280px';
+      canvasContainer.style.height = '1280px';
+      break;
+    case 'threequarters-size':
+      canvasContainer.style.width = '768px';
+      canvasContainer.style.height = '1024px';
+      break;
+    case 'ninebysixteen-size':
+      canvasContainer.style.width = '720px';
+      canvasContainer.style.height = '1280px';
+      break;
+    case 'custom-size':
+      const customWidth = customWidthInput.value + 'px';
+      const customHeight = customHeightInput.value + 'px';
+      canvasContainer.style.width = customWidth;
+      canvasContainer.style.height = customHeight;
+      break;
+    default:
+      break;
+  }
+}
+
+function resetCanvasView() {
+  bodyWrapper.style.overflow = 'auto';
+  bodyWrapper.style.width = '100%';
+  bodyWrapper.style.height = '100%';
+}
+
+function adjustCustomSize() {
+  const customWidth = customWidthInput.value + 'px';
+  const customHeight = customHeightInput.value + 'px';
+  canvasContainer.style.width = customWidth;
+  canvasContainer.style.height = customHeight;
+  resetCanvasView();
 }
